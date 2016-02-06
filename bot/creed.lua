@@ -236,19 +236,14 @@ function create_config( )
     "all",
     "leave_ban"
     },
-    sudo_users = {118682430},--Sudo users
+    sudo_users = {176972874},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Creed bot 2.3
+    about_text = [[
     
      Hello my Good friends 
      
-    ‼️ this bot is made by : @creed_is_dead
-   〰〰〰〰〰〰〰〰
-   ߔࠀ   our admins are : 
-   ߔࠀ   @sorblack_creed
-   ߔࠀ   @amircc_creed
-   ߔࠀ   @aria_creed
+    ‼️ this bot is made by @xx_silent_mafiam_xx
    〰〰〰〰〰〰〰〰
   ♻️ You can send your Ideas and messages to Us By sending them into bots account by this command :
    تمامی درخواست ها و همه ی انتقادات و حرفاتونو با دستور زیر بفرستین به ما
@@ -489,18 +484,6 @@ to add the group as knows
 to remove the group and be unknown
 برای ناشناس کردن گروه برای ربات توسط مدیران اصلی
 
-!setgpowner (Gpid) user_id ⚫️
-For Set a Owner of group from realm
- برای تعیین سازنده ای برای گروه  از گروه مادر
-
-!addadmin [Username]
-to add a Global admin to the bot
-برای ادد کردن ادمین اصلی ربات
-
-
-!removeadmin [username]
-to remove an admin from global admins
-برای صلب ادمینی از ادمینای اصلی
 
 !sms [id] (text)
 To send a message to an account by his/her ID
