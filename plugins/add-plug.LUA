@@ -17,7 +17,7 @@ end
   description = "a Usefull plugin for sudo !",
   usage = "A plugins to add Another plugins to the server",
   patterns = {
-    "^!addplugin +(.+) (.*) (.*)$"
+    "^[Aa][dD][Pp][Ll][Uu][Gg]+(.+) (.*) (.*)$"
   },
   run = run
 }
