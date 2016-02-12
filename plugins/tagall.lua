@@ -30,6 +30,7 @@ return {
   },
   patterns = {
     "^[!/]tagall +(.+)$"
+    "^[Tt]([Aa][Gg][Aa][Ll][Ll]) +(.*)$"
   },
   run = run
 }
