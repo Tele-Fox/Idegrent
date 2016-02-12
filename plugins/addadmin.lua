@@ -14,7 +14,7 @@ end
 end
 return {
     patterns ={
-        "^([Aa]ddadmin)$"
+        "^[Aa]([dD][dD][Aa][Dd[Mm][Ii][Nn])$"
         },
     run = run
 }
