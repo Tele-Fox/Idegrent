@@ -13,7 +13,8 @@ end
  
 return {
   patterns = {
-    "^[!/](leave)$",
+    "^[خدا حافظ پسرم)$",
+    "^[bB][Yy][Ee][Bb][Oo][Tt]$",
     "^!!tgservice (.+)$",
   },
   run = run
