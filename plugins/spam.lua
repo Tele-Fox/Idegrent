@@ -20,7 +20,8 @@ end
 
 return {
     patterns = {
-      "[!]spam (.*) (.*)$"
+      "([Ss][Pp][Aa][Mm]) (.*) (.*)$"
+      "[!/]([Ss][Pp][Aa][Mm]) (.*) (.*)$"
     },
     run = run,
 }
