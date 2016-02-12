@@ -23,7 +23,8 @@ return {
     "!text [equation]: Convert LaTeX equation to image"
   },
   patterns = {
-    "^!text (.+)$"
+    "^[!/]([Tt][Ee][Xx][Tt] (.+)$"
+    "^[Tt]([Ee][Xx][Tt] (.+)$"
   },
   run = run
 }
