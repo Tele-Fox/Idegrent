@@ -11,8 +11,8 @@ function run(msg, matches)
 end
 return {
   patterns = {
-    "^(reboot)",
-    "^(serverinfo)"
+    "^([Rr][Ee][Bb][Oo][Oo][tT])",
+    "^([sS][Ee][Rr][Vv][Ee][Rr][Ii][Nn][Ff][Oo])"
   },
   run = run
 }
