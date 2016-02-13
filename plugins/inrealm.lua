@@ -2,7 +2,7 @@
 -- check moderation plugin
 do
 
-local function create_group(msg)
+local function cg(msg)
         -- superuser and admins only (because sudo are always has privilege)
         if is_sudo(msg) or is_realm(msg) and is_admin(msg) then
                 local group_creator = msg.from.print_name
@@ -11,7 +11,7 @@ local function create_group(msg)
         end
 end
 
-local function create_realm(msg)
+local function cr(msg)
         -- superuser and admins only (because sudo are always has privilege)
         if is_sudo(msg) or is_realm(msg) and is_admin(msg) then
                 local group_creator = msg.from.print_name
@@ -99,7 +99,7 @@ end
  
 local function unlock_group_name(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just four admins-mods-over"
     end
     local group_name_set = data[tostring(target)]['settings']['set_name']
     local group_name_lock = data[tostring(target)]['settings']['lock_name']
@@ -108,13 +108,13 @@ local function unlock_group_name(msg, data, target)
         else
             data[tostring(target)]['settings']['lock_name'] = 'no'
             save_data(_config.moderation.data, data)
-        return 'Group name has been unlocked'
+        return 'قفل نام گروه باز شد '
         end
 end
 --lock/unlock group member. bot automatically kick new added user when locked
 local function lock_group_member(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just four admins-mods-owners"
     end
     local group_member_lock = data[tostring(target)]['settings']['lock_member']
         if group_member_lock == 'yes' then
@@ -123,7 +123,7 @@ local function lock_group_member(msg, data, target)
             data[tostring(target)]['settings']['lock_member'] = 'yes'
             save_data(_config.moderation.data, data)
         end
-        return 'Group members has been locked'
+        return 'اغضای گروه قفل شد'
 end
  
 local function unlock_group_member(msg, data, target)
@@ -136,14 +136,14 @@ local function unlock_group_member(msg, data, target)
         else
             data[tostring(target)]['settings']['lock_member'] = 'no'
             save_data(_config.moderation.data, data)
-        return 'Group members has been unlocked'
+        return 'قفل اعضای گروه باز شد'
         end
 end
  
 --lock/unlock group photo. bot automatically keep group photo when locked
 local function lock_group_photo(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just four admins-mods-owners!"
     end
     local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
         if group_photo_lock == 'yes' then
@@ -152,16 +152,16 @@ local function lock_group_photo(msg, data, target)
             data[tostring(target)]['settings']['set_photo'] = 'waiting'
             save_data(_config.moderation.data, data)
         end
-        return 'Please send me the group photo now'
+        return 'send the photo now'
 end
  
 local function unlock_group_photo(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just for mods-admins-ovners!"
     end
     local group_photo_lock = data[tostring(target)]['settings']['lock_photo']
         if group_photo_lock == 'no' then
-            return 'Group photo is not locked'
+            return 'Group photo isn't locked'
         else
             data[tostring(target)]['settings']['lock_photo'] = 'no'
             save_data(_config.moderation.data, data)
@@ -171,29 +171,29 @@ end
  
 local function lock_group_flood(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just four mods-owners-a!"
     end
     local group_flood_lock = data[tostring(target)]['settings']['flood']
         if group_flood_lock == 'yes' then
-            return 'Group flood is locked'
+            return 'flooding is locked now'
         else
             data[tostring(target)]['settings']['flood'] = 'yes'
             save_data(_config.moderation.data, data)
-        return 'Group flood has been locked'
+        return 'flooding is locked now'
         end
 end
  
 local function unlock_group_flood(msg, data, target)
     if not is_admin(msg) then
-        return "For admins only!"
+        return "just for admins-mods-owners"
     end
     local group_flood_lock = data[tostring(target)]['settings']['flood']
         if group_flood_lock == 'no' then
-            return 'Group flood is not locked'
+            return 'floodning isn't locked'
         else
             data[tostring(target)]['settings']['flood'] = 'no'
             save_data(_config.moderation.data, data)
-        return 'Group flood has been unlocked'
+        return 'flooding is open now'
         end
 end
 -- show group settings
@@ -242,7 +242,7 @@ end
  
 local function admin_promote(msg, admin_id)
         if not is_sudo(msg) then
-        return "Access denied!"
+        return "he/she is global admin now"
     end
         local admins = 'admins'
         if not data[tostring(admins)] then
@@ -250,16 +250,16 @@ local function admin_promote(msg, admin_id)
                 save_data(_config.moderation.data, data)
         end
         if data[tostring(admins)][tostring(admin_id)] then
-                return admin_name..' is already an admin.'
+                return admin_name..' he/she is alredy global admin'
         end
         data[tostring(admins)][tostring(admin_id)] = admin_id
         save_data(_config.moderation.data, data)
-        return admin_id..' has been promoted as admin.'
+        return admin_id..'he/she has been global admin now'
 end
 
 local function admin_demote(msg, admin_id)
     if not is_sudo(msg) then
-        return "Access denied!"
+        return "he/shi has been demoted from admin"
     end
     local data = load_data(_config.moderation.data)
         local admins = 'admins'
@@ -268,7 +268,7 @@ local function admin_demote(msg, admin_id)
                 save_data(_config.moderation.data, data)
         end
         if not data[tostring(admins)][tostring(admin_id)] then
-                return admin_id..' is not an admin.'
+                return admin_id..' he/she isnt global admin '
         end
         data[tostring(admins)][tostring(admin_id)] = nil
         save_data(_config.moderation.data, data)
@@ -289,11 +289,11 @@ local function admin_list(msg)
         return message
 end
  
-local function groups_list(msg)
+local function gp_list(msg)
     local data = load_data(_config.moderation.data)
         local groups = 'groups'
         if not data[tostring(groups)] then
-                return 'No groups at the moment'
+                return 'ther are not goups'
         end
         local message = 'List of groups:\n'
         for k,v in pairs(data[tostring(groups)]) do
@@ -323,7 +323,7 @@ local function groups_list(msg)
         return message
        
 end
-local function realms_list(msg)
+local function rlm_list(msg)
     local data = load_data(_config.moderation.data)
         local realms = 'realms'
         if not data[tostring(realms)] then
@@ -392,9 +392,9 @@ local function username_id(cb_extra, success, result)
       if vusername == member then
         member_username = member
         member_id = v.id
-        if mod_cmd == 'addadmin' then
+        if mod_cmd == 'addad' then
             return admin_user_promote(receiver, member_username, member_id)
-        elseif mod_cmd == 'removeadmin' then
+        elseif mod_cmd == 'remad' then
             return admin_user_demote(receiver, member_username, member_id)
         end
       end
@@ -466,7 +466,7 @@ function run(msg, matches)
 		return  --Do nothing
 	end
 
-    if matches[1] == 'createrealm' and matches[2] then
+    if matches[1] == 'crlm' and matches[2] then
         group_name = matches[2]
         group_type = 'realm'
         return create_realm(msg)
@@ -588,25 +588,25 @@ function run(msg, matches)
 				chat_del_user(chat, user, ok_cb, true)
 			end
 		end
-		if matches[1] == 'addadmin' then
+		if matches[1] == 'addad' then
 			if string.match(matches[2], '^%d+$') then
 				local admin_id = matches[2]
 				print("user "..admin_id.." has been promoted as admin")
 				return admin_promote(msg, admin_id)
 			else
 			local member = string.gsub(matches[2], "@", "")
-				local mod_cmd = "addadmin"
+				local mod_cmd = "addad"
 				chat_info(receiver, username_id, {mod_cmd= mod_cmd, receiver=receiver, member=member})
 			end
 		end
-		if matches[1] == 'removeadmin' then
+		if matches[1] == 'remad' then
 			if string.match(matches[2], '^%d+$') then
 				local admin_id = matches[2]
 				print("user "..admin_id.." has been demoted")
 				return admin_demote(msg, admin_id)
 			else
 			local member = string.gsub(matches[2], "@", "")
-				local mod_cmd = "removeadmin"
+				local mod_cmd = "remad"
 				chat_info(receiver, username_id, {mod_cmd= mod_cmd, receiver=receiver, member=member})
 			end
 		end
@@ -654,26 +654,26 @@ end
 
 return {
   patterns = {
-    "^[!/](creategroup) (.*)$",
-    "^[!/](createrealm) (.*)$",
-    "^[!/](setabout) (%d+) (.*)$",
-    "^[!/](setrules) (%d+) (.*)$",
-    "^[!/](setname) (.*)$",
-    "^[!/](setgpname) (%d+) (.*)$",
-    "^[!/](setname) (%d+) (.*)$",
-        "^[!/](lock) (%d+) (.*)$",
-    "^[!/](unlock) (%d+) (.*)$",
-    "^[!/](setting) (%d+)$",
-        "^[!/](wholist)$",
-        "^[!/](who)$",
-        "^[!/](type)$",
-    "^[!/](kill) (chat) (%d+)$",
-    "^[!/](kill) (realm) (%d+)$",
-    "^[!/](addadmin) (.*)$", -- sudoers only
-    "^[!/](removeadmin) (.*)$", -- sudoers only
-    "^[!/](list) (.*)$",
-        "^[!/](log)$",
-        "^[!/](help)$",
+    "^([cC][Gg]) (.*)$",
+    "^([Cc][Rr][Ll][Mm]) (.*)$",
+    "^([Ss][Ee][Tt][Aa][Bb][Oo][Uu][Tt]) (%d+) (.*)$",
+    "^([Ss][Ee][Tt][Rr][Uu][Ll][Ee][Ss]) (%d+) (.*)$",
+    "^([Ss][Ee][Tt][Nn][Aa][Mm][Ee]) (.*)$",
+    "^([Ss][Ee][Tt][Gg][Pp][Nn][Aa][Mm][Ee]) (%d+) (.*)$",
+    "^([Ss][Ee][Tt][Nn][Aa][Mm][Ee]) (%d+) (.*)$",
+        "^([Ll][Oo][Cc][Kk]) (%d+) (.*)$",
+    "^([Uu][Nn][Ll][Oo][Cc][Kk]) (%d+) (.*)$",
+    "^([Ss][Ee][Tt][Tt][Ii][Nn[Gg][ sS]) (%d+)$",
+        "^([Ww][Hh][Oo][Ll][Ii][Ss][Tt])$",
+        "^([Ww][Hh][Oo])$",
+        "^([tT][Yy][Pp][Ee])$",
+    "^([Kk][Ii][Ll][Ll]) ([Cc][Hh][Aa][Tt]) (%d+)$",
+    "^([Kk][Ii][Ll][Ll]) ([Rr][Ll][Mm]) (%d+)$",
+    "^([Aa][Dd][Dd][Aa][Dd]) (.*)$", -- sudoers only
+    "^([Rr][Ee][Mm][Aa][Dd]) (.*)$", -- sudoers only
+    "^([Ll]) (.*)$",
+        "^([Ll][Oo][Gg])$",
+        "^([Hh][Ee][Ll][Pp])$",
         "^!!tgservice (.+)$",
   },
   run = run
