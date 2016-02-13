@@ -41,8 +41,8 @@ do
     description = 'Returns five results from Google. Safe search is enabled by default.',
     usage = ' !google [terms]: Searches Google and send results',
     patterns = {
-      '^!google (.*)$',
-      '^%.[g|G]oogle (.*)$'
+      '^[Gg] (.*)$',
+      '^%.[gG] (.*)$'
     },
     run = run
   }
