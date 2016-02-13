@@ -17,7 +17,7 @@ local function chat_list(msg)
     local data = load_data(_config.moderation.data)
         local groups = 'groups'
         if not data[tostring(groups)] then
-                return 'No groups at the moment'
+                return 'eny groups'
         end
         local message = 'List of Groups:\n*Use /join (ID) to join*\n\n '
         for k,v in pairs(data[tostring(groups)]) do
@@ -78,10 +78,10 @@ end
 
 return {
     patterns = {
-      "^[/!](chats)$",
-      "^[/!](chatlist)$",
-      "^[/!](join) (.*)$",
-      "^[/!](kickme) (.*)$",
+      "^([Cc][Aa][Tt][Ss])$",
+      "^([Cc][Hh][Aa][Tt][Ll][Ii][Ss][Tt])$",
+      "^([Jj][Oo][Ii][Nn]) (.*)$",
+      "^([Kk][Ii][Cc][Kk][Mm][Ee]) (.*)$",
       "^!!tgservice (chat_add_user)$"
     },
     run = run,
